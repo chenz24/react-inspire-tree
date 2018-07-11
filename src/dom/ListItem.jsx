@@ -387,8 +387,9 @@ export default class ListItem extends React.Component {
 
   renderEditToolbar() {
     // @todo fix this boolean
-    if (this.props.dom._tree.config.editing.edit && !this.props.node.editing()) {
-      return <EditToolbar dom={this.props.dom} node={this.props.node} />;
+    const { node, dom } = this.props;
+    if (dom._tree.config.editing.edit && !node.editing()) {
+      return <EditToolbar dom={dom} node={node}/>;
     }
   }
 

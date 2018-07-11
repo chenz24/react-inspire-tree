@@ -34,20 +34,24 @@ export default class EditToolbar extends React.Component {
   }
 
   render() {
+    const { node, dom } = this.props;
     const buttons = [];
 
-    if (this.props.dom._tree.config.editing.edit) {
-      buttons.push(<a className='btn icon icon-pencil' onClick={this.edit.bind(this)} title='Edit this node'></a>);
+    if (dom._tree.config.editing.edit) {
+      buttons.push(
+        <a className="btn icon icon-pencil" onClick={this.edit} title="Edit this node" key={`${node.id}-edit`}></a>);
     }
 
-    if (this.props.dom._tree.config.editing.add) {
-      buttons.push(<a className='btn icon icon-plus' onClick={this.add.bind(this)} title='Add a child node'></a>);
+    if (dom._tree.config.editing.add) {
+      buttons.push(
+        <a className="btn icon icon-plus" onClick={this.add} title="Add a child node" key={`${node.id}-add`}></a>);
     }
 
-    if (this.props.dom._tree.config.editing.remove) {
-      buttons.push(<a className='btn icon icon-minus' onClick={this.remove.bind(this)} title='Remove this node'></a>);
+    if (dom._tree.config.editing.remove) {
+      buttons.push(
+        <a className="btn icon icon-minus" onClick={this.remove} title="Remove this node" key={`${node.id}-remove`}></a>);
     }
 
-    return <span className='btn-group'>{ buttons }</span>;
+    return <span className="btn-group">{buttons}</span>;
   }
 }

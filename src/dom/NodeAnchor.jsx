@@ -1,4 +1,5 @@
 import React from 'react';
+import EditForm from './EditForm';
 
 class NodeAnchor extends React.Component {
   constructor() {
@@ -106,10 +107,10 @@ class NodeAnchor extends React.Component {
       attributes.className = `${attributes.className} icon-placeholder`;
     }
 
-    const content = node.text;
-    // if (node.editing()) {
-    //   content = <EditForm dom={this.props.dom} node={this.props.node} />;
-    // }
+    let content = node.text;
+    if (node.editing()) {
+      content = <EditForm dom={this.props.dom} node={this.props.node} />;
+    }
 
     return (
       <a

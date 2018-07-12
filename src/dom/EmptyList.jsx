@@ -5,7 +5,7 @@ class EmptyList extends React.Component {
     return (
       <ul>
         <li className="leaf">
-          <span className="node icon-file-empty empty">{this.props.text}</span>
+          <span className="node ins-icon icon-file-empty empty">{this.props.text}</span>
         </li>
       </ul>
     );

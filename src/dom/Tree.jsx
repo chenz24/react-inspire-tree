@@ -18,7 +18,7 @@ export default class Tree extends React.Component {
 
   renderAddLink() {
     if (this.props.dom._tree.config.editing.add) {
-      return <li><a className='btn icon icon-plus' onClick={this.add.bind(this)} title='Add a new root node'></a></li>;
+      return <li><a className='btn ins-icon icon-plus' onClick={this.add.bind(this)} title='Add a new root node'></a></li>;
     }
   }
 

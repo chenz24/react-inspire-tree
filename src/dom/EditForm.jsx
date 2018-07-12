@@ -106,7 +106,7 @@ export default class EditForm extends React.Component {
         />
         <span className="btn-group">
           <button
-            className="btn icon icon-check"
+            className="btn ins-icon icon-check"
             onFocus={this.stopPropagation}
             onClick={this.save}
             title="Save"
@@ -114,7 +114,7 @@ export default class EditForm extends React.Component {
           >
           </button>
           <button
-            className="btn icon icon-cross"
+            className="btn ins-icon icon-cross"
             onFocus={this.stopPropagation}
             onClick={this.cancel}
             title="Cancel"

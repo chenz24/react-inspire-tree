@@ -23,7 +23,7 @@ class ToggleAnchor extends React.Component {
   render() {
     const { collapsed } = this.props;
     const toggleClassName = collapsed ? 'icon-expand' : 'icon-collapse';
-    const className = `toggle icon ${toggleClassName}`;
+    const className = `toggle ins-icon ${toggleClassName}`;
 
     return (
       <a className={className} onClick={this.handleToggleCollapse}/>

@@ -39,17 +39,17 @@ export default class EditToolbar extends React.Component {
 
     if (dom._tree.config.editing.edit) {
       buttons.push(
-        <a className="btn icon icon-pencil" onClick={this.edit} title="Edit this node" key={`${node.id}-edit`}></a>);
+        <a className="btn ins-icon icon-pencil" onClick={this.edit} title="Edit this node" key={`${node.id}-edit`}></a>);
     }
 
     if (dom._tree.config.editing.add) {
       buttons.push(
-        <a className="btn icon icon-plus" onClick={this.add} title="Add a child node" key={`${node.id}-add`}></a>);
+        <a className="btn ins-icon icon-plus" onClick={this.add} title="Add a child node" key={`${node.id}-add`}></a>);
     }
 
     if (dom._tree.config.editing.remove) {
       buttons.push(
-        <a className="btn icon icon-minus" onClick={this.remove} title="Remove this node" key={`${node.id}-remove`}></a>);
+        <a className="btn ins-icon icon-minus" onClick={this.remove} title="Remove this node" key={`${node.id}-remove`}></a>);
     }
 
     return <span className="btn-group">{buttons}</span>;

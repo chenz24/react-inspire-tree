@@ -27,7 +27,7 @@ export default class List extends React.Component {
   renderLoadMoreNode() {
     return (
       <li className="leaf detached">
-        <a className="title icon icon-more load-more" onClick={this.loadMore.bind(this)}>Load More</a>
+        <a className="title ins-icon icon-more load-more" onClick={this.loadMore.bind(this)}>Load More</a>
       </li>
     );
   }
@@ -35,7 +35,7 @@ export default class List extends React.Component {
   renderLoadingTextNode() {
     return (
       <li className="leaf">
-        <span className="title icon icon-more">Loading...</span>
+        <span className="title ins-icon icon-more">Loading...</span>
       </li>
     );
   }

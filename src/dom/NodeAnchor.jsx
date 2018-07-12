@@ -95,7 +95,7 @@ class NodeAnchor extends React.Component {
   render() {
     const { node, dom, expanded, hasOrWillHaveChildren } = this.props;
     const attributes = node.itree.a.attributes || {};
-    attributes.className = 'node icon';
+    attributes.className = 'node ins-icon';
     attributes.tabIndex = 1;
     attributes.unselectable = 'on';
 

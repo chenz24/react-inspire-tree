@@ -52,9 +52,10 @@
     }
 
     [type="checkbox"] {
-        left: 18px;
+        left: 22px;
         position: absolute;
-        top: 4px;
+        top: 50%;
+        transform: translate(0, -50%);
         vertical-align: middle;
         width: 20px;
         z-index: 2;

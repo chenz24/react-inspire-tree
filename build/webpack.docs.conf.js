@@ -8,18 +8,18 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const env = config.build.env;
+const env = config.docs.env;
 
 let webpackConfig = merge(baseWebpackConfig, {
   mode: 'production',
   module: {
     rules: utils.styleLoaders({
-      sourceMap: config.build.productionSourceMap
+      sourceMap: config.docs.productionSourceMap
     })
   },
-  devtool: config.build.productionSourceMap ? '#source-map' : false,
+  devtool: config.docs.productionSourceMap ? '#source-map' : false,
   output: {
-    path: config.build.assetsRoot,
+    path: config.docs.assetsRoot,
     filename: utils.assetsPath('js/[name].[chunkhash].js'),
     chunkFilename: utils.assetsPath('js/[name].[chunkhash].js')
   },
@@ -36,7 +36,7 @@ let webpackConfig = merge(baseWebpackConfig, {
     },
     minimizer: [
       new UglifyJsPlugin({
-        sourceMap: config.build.productionSourceMap,
+        sourceMap: config.docs.productionSourceMap,
         cache: true,
         parallel: true,
         uglifyOptions: {
@@ -61,7 +61,7 @@ let webpackConfig = merge(baseWebpackConfig, {
     // you can customize output by editing /index.html
     // see https://github.com/ampedandwired/html-webpack-plugin
     new HtmlWebpackPlugin({
-      filename: config.build.index,
+      filename: config.docs.index,
       template: 'index.html',
       inject: true,
       minify: {
@@ -75,17 +75,17 @@ let webpackConfig = merge(baseWebpackConfig, {
       chunksSortMode: 'dependency'
     }),
     // copy custom static assets
-    new CopyWebpackPlugin([
-      {
-        from: path.resolve(__dirname, '../static'),
-        to: config.build.assetsSubDirectory,
-        ignore: ['.*']
-      }
-    ])
+    // new CopyWebpackPlugin([
+    //   {
+    //     from: path.resolve(__dirname, '../static'),
+    //     to: config.docs.assetsSubDirectory,
+    //     ignore: ['.*']
+    //   }
+    // ])
   ]
 });
 
-if (config.build.productionGzip) {
+if (config.docs.productionGzip) {
   const CompressionWebpackPlugin = require('compression-webpack-plugin');
 
   webpackConfig.plugins.push(
@@ -94,7 +94,7 @@ if (config.build.productionGzip) {
       algorithm: 'gzip',
       test: new RegExp(
         '\\.(' +
-        config.build.productionGzipExtensions.join('|') +
+        config.docs.productionGzipExtensions.join('|') +
         ')$'
       ),
       threshold: 10240,
@@ -103,7 +103,7 @@ if (config.build.productionGzip) {
   );
 }
 
-if (config.build.bundleAnalyzerReport) {
+if (config.docs.bundleAnalyzerReport) {
   const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
   webpackConfig.plugins.push(new BundleAnalyzerPlugin())
 }

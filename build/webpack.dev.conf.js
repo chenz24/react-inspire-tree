@@ -15,6 +15,9 @@ Object.keys(baseWebpackConfig.entry).forEach(name => {
 });
 
 module.exports = merge(baseWebpackConfig, {
+  entry: {
+    app: './site/main.js'
+  },
   mode: 'development',
   module: {
     rules: utils.styleLoaders({sourceMap: config.dev.cssSourceMap})

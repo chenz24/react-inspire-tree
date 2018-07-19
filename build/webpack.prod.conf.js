@@ -11,6 +11,9 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const env = config.build.env;
 
 let webpackConfig = merge(baseWebpackConfig, {
+  entry: {
+    'react-inspire-tree': './src/index.js'
+  },
   mode: 'production',
   module: {
     rules: utils.styleLoaders({
@@ -20,20 +23,32 @@ let webpackConfig = merge(baseWebpackConfig, {
   devtool: config.build.productionSourceMap ? '#source-map' : false,
   output: {
     path: config.build.assetsRoot,
-    filename: utils.assetsPath('js/[name].[chunkhash].js'),
-    chunkFilename: utils.assetsPath('js/[name].[chunkhash].js')
+    library: 'react-inspire-tree',
+    libraryTarget: 'umd',
+    filename: utils.assetsPath('[name].min.js'),
+    // chunkFilename: utils.assetsPath('js/[name].[chunkhash].js')
+  },
+  externals: {
+    // lodash : {
+    //   commonjs: 'lodash',
+    //   amd: 'lodash',
+    //   root: '_' // indicates global variable
+    // },
+    lodash: true,
+    react: true,
+    'react-dom': true,
   },
   optimization: {
     // split vendor js into its own file
-    splitChunks: {
-      cacheGroups: {
-        vendor: {
-          test: /[\\/]node_modules[\\/]/,
-          chunks: 'initial',
-          name: 'vendor'
-        }
-      }
-    },
+    // splitChunks: {
+    //   cacheGroups: {
+    //     vendor: {
+    //       test: /[\\/]node_modules[\\/]/,
+    //       chunks: 'initial',
+    //       name: 'vendor'
+    //     }
+    //   }
+    // },
     minimizer: [
       new UglifyJsPlugin({
         sourceMap: config.build.productionSourceMap,
@@ -55,33 +70,33 @@ let webpackConfig = merge(baseWebpackConfig, {
     }),
     // extract css into its own file
     new MiniCssExtractPlugin({
-      filename: utils.assetsPath('css/[name].[contenthash].css')
+      filename: utils.assetsPath('css/[name].min.css')
     }),
     // generate dist index.html with correct asset hash for caching.
     // you can customize output by editing /index.html
     // see https://github.com/ampedandwired/html-webpack-plugin
-    new HtmlWebpackPlugin({
-      filename: config.build.index,
-      template: 'index.html',
-      inject: true,
-      minify: {
-        removeComments: true,
-        collapseWhitespace: true,
-        removeAttributeQuotes: true
-        // more options:
-        // https://github.com/kangax/html-minifier#options-quick-reference
-      },
-      // necessary to consistently work with multiple chunks via CommonsChunkPlugin
-      chunksSortMode: 'dependency'
-    }),
+    // new HtmlWebpackPlugin({
+    //   filename: config.build.index,
+    //   template: 'index.html',
+    //   inject: true,
+    //   minify: {
+    //     removeComments: true,
+    //     collapseWhitespace: true,
+    //     removeAttributeQuotes: true
+    //     // more options:
+    //     // https://github.com/kangax/html-minifier#options-quick-reference
+    //   },
+    //   // necessary to consistently work with multiple chunks via CommonsChunkPlugin
+    //   chunksSortMode: 'dependency'
+    // }),
     // copy custom static assets
-    new CopyWebpackPlugin([
-      {
-        from: path.resolve(__dirname, '../static'),
-        to: config.build.assetsSubDirectory,
-        ignore: ['.*']
-      }
-    ])
+    // new CopyWebpackPlugin([
+    //   {
+    //     from: path.resolve(__dirname, '../static'),
+    //     to: config.build.assetsSubDirectory,
+    //     ignore: ['.*']
+    //   }
+    // ])
   ]
 });
 

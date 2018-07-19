@@ -7,7 +7,7 @@ const resolve = dir => path.join(__dirname, '..', dir);
 
 module.exports = {
   entry: {
-    app: './site/main.js'
+    // app: './site/main.js'
   },
   output: {
     path: config.build.assetsRoot,
@@ -28,7 +28,9 @@ module.exports = {
       'assets': resolve('src/assets'),
       'components': resolve('src/components'),
       'routes': resolve('src/routes'),
-      'views': resolve('src/views')
+      'pages': resolve('site/pages'),
+      'data': resolve('site/data'),
+      'react-inspire-tree': resolve('src'),
     }
   },
   module: {
@@ -53,9 +55,9 @@ module.exports = {
       {
         test: /\.md?$/,
         use: [
-          'babel-loader',
-          'react-md-doc-loader',
-          'react-md-doc-loader/lib/md-doc-loader.js',
+          { loader: 'babel-loader' },
+          { loader: 'react-md-doc-loader', options: { jsTemplate: resolve('build/doc-template.jstpl') } },
+          { loader: 'react-md-doc-loader/lib/md-doc-loader.js' },
         ],
         include: [resolve('site')],
       },

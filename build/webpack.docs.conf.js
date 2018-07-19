@@ -12,6 +12,9 @@ const env = config.docs.env;
 
 let webpackConfig = merge(baseWebpackConfig, {
   mode: 'production',
+  entry: {
+    app: './site/main.js'
+  },
   module: {
     rules: utils.styleLoaders({
       sourceMap: config.docs.productionSourceMap

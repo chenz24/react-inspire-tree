@@ -1,17 +1,22 @@
 /*eslint-disable */
-import IndexLayout from '../components/IndexLayout';
-import Index from '../components/Index';
+import Layout from '../components/Layout';
+
+import Introduction from 'pages/Introduction.md';
+import Usage from 'pages/Usage.md';
 
 export default [
   {
     path: '/',
-    component: IndexLayout,
+    component: Layout,
     indexRoute: {
-      component: Index,
+      component: Introduction,
     },
     childRoutes: [{
-      path: '/',
-      component: Index,
+      path: '/introduction',
+      component: Introduction,
+    }, {
+      path: '/usage',
+      component: Usage,
     }],
   },
 ];

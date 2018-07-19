@@ -1,0 +1,78 @@
+import React, { Component } from 'react';
+IMPORTS
+
+DEMO_DECLARATIONS
+
+function RawHtmlRenderer(props) {
+  return <props.tag {...props.attributes} dangerouslySetInnerHTML={{ __html: props.html }}></props.tag>;
+}
+
+function Markdown(props) {
+  return <RawHtmlRenderer tag="section" html={props.html} attributes={{ className: 'react-markdown' }}/>;
+}
+
+function Style(props) {
+  return <RawHtmlRenderer tag="style" html={props.style} />;
+}
+
+class Demo extends Component {
+  state = {
+    showCode: false
+  };
+
+  toggle = () => {
+    this.setState({
+      showCode: !this.state.showCode
+    });
+  };
+
+  render() {
+    const { showCode } = this.state;
+    const { title, src, demo } = this.props;
+
+    return (
+      <div className="box box-demo">
+        <div className="box-demo-show">
+          {demo}
+        </div>
+        <div className="box-demo-doc">
+          <div className="box-demo-description">
+            <RawHtmlRenderer
+              tag="div"
+              attributes={{
+                className: ''
+              }}
+              html={title}
+            />
+          </div>
+          <div className={`box-demo-code-wrap ${showCode ? 'open' : ''}`}>
+            <pre className="box-demo-code">
+              <RawHtmlRenderer
+                tag="code"
+                html={src}
+                attributes={{
+                  className: 'language-jsx'
+                }}
+              />
+            </pre>
+            <div className={`btn-toggle ${showCode ? 'open' : ''}`} onClick={this.toggle}>
+              <i className="fa fa-angle-down"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    )
+  }
+}
+
+export default class DocContainer extends Component {
+  render() {
+    return React.createElement(
+      'div',
+      {
+        className: 'doc-react-container'
+      },
+      SECTIONS
+    );
+  }
+}

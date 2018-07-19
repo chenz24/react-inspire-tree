@@ -2,7 +2,7 @@ import React from 'react'; // eslint-disable-line
 import { hot } from 'react-hot-loader'; // eslint-disable-line
 import { browserHistory as history, Router } from 'react-router';
 import routes from './routes';
-// import './scss/main.scss';
+import './scss/main.scss';
 
 const App = () => (
   <div className='App'>
